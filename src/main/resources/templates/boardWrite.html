@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>글쓰기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            font-size: 16px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            resize: none;  /* 크기 조정 비활성화 */
+            height: 150px; /* 고정 높이 */
+        }
+
+        input[type="text"]:focus, textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>글쓰기</h1>
+    <form id="boardForm">
+        <input type="number" id="seqBoardNum" name="seqBoardNum"
+               th:value="${board != null ? board.seqBoardNum : ''}" hidden="hidden">
+        <label for="title">제목:</label>
+        <input type="text" id="title" name="title"
+               th:value="${board != null ? board.title : ''}"  required>
+
+        <label for="content">내용:</label>
+        <textarea id="content" name="content"
+                  th:text="${board != null ? board.content : ''}" required></textarea>
+
+        <button id="saveButton" type="button" onclick="submitForm('POST')"
+                th:if="${board == null}">등록</button>
+        <button id="updateButton" type="button" onclick="submitForm('PUT')"
+                th:unless="${board == null}">수정</button>
+        <button type="button" th:onclick="window.history.back()">취소</button>
+    </form>
+</body>
+</html>
+<script>
+    async function submitForm(method) {
+        let formData = new FormData();
+        let url = '';
+
+        const boardData = {
+            seqBoardNum: document.getElementById('seqBoardNum').value,
+            title: document.getElementById('title').value,
+            content: document.getElementById('content').value
+        };
+
+        if(method === 'POST'){
+            url = '/board';
+        }else if(method === 'PUT'){
+            url = '/board/' + document.getElementById('seqBoardNum').value;
+        }
+
+        try {
+            const response = await fetch(url, {
+                method: method,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(boardData),
+            });
+
+            if (response.redirected) {
+                alert("저장 완료");
+                window.location.href = "/";
+            }
+
+        } catch (error) {
+            alert("저장이 되지 않았습니다. 다시 시도해 주세요.")
+        }
+
+    }
+
+</script>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>게시글 상세</title>
+        <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
+            .post-header { margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+            .post-header h1 { margin: 0; }
+            .post-header .meta { font-size: 0.9em; color: gray; text-align: right; }
+            .post-content { margin-top: 20px; }
+            .actions { margin-top: 20px; }
+            a { color: #007bff; text-decoration: none; }
+            a:hover { text-decoration: underline; }
+            .btn { padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; }
+            .btn:hover { background-color: #0056b3; }
+            .btn-secondary { background-color: #6c757d; }
+            .btn-secondary:hover { background-color: #5a6268; }
+            .btn-small {
+                transform: scale(0.8);
+            }
+            .actions { display: flex; gap: 10px; justify-content: flex-end; }
+        </style>
+    </head>
+    <body>
+    <div class="post-header">
+        <div>
+            <h1 th:text="${board.title}"></h1>
+            <p class="meta">
+                작성자: <span th:text="${board.name}"></span> |
+                작성일: <span th:text="${#temporals.format(board.createDt, 'yyyy-MM-dd HH:mm')}"></span>
+            </p>
+        </div>
+        <div class="actions">
+            <a th:href="@{'/boardWrite/' + ${board.seqBoardNum}}" class="btn btn-small">수정</a>
+            <a th:href="@{'/boardDelete/' + ${board.seqBoardNum}}" class="btn btn-secondary btn-small" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</a>
+        </div>
+    </div>
+    <div class="post-content">
+        <p th:text="${board.content}"></p>
+    </div>
+    <div class="actions">
+        <a th:href="@{'/'}" class="btn">목록으로</a>
+    </div>
+    </body>
+</html>

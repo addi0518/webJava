@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; text-align: center; padding: 10px; }
+        th { background-color: #f4f4f4; }
+        a { color: #007bff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div style="text-align: right; margin-bottom: 20px;">
+        <span th:if="${session.email != null}">
+            <strong th:text="'환영합니다, ' + ${session.name} + ' 님!'"></strong>
+            <a th:href="@{/logout}" style="margin-left: 10px;">로그아웃</a>
+        </span>
+        <span th:if="${session.email == null}">
+            <a th:href="@{/login}">로그인</a>
+        </span>
+    </div>
+    <h1>게시판</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+            </tr>
+        </thead>
+            <!-- 데이터를 반복 처리 -->
+        <tbody>
+            <tr th:each="post : ${boardList.content}">
+                <td th:text="${post.seqBoardNum}"></td>
+                <td><a th:href="@{'/board/' + ${post.seqBoardNum}}" th:text="${post.title}"></a></td>
+                <td th:text="${post.name}"></td>
+                <td th:text="${#temporals.format(post.createDt, 'yyyy-MM-dd')}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <a th:href="@{/boardWrite}" class="btn btn-primary"
+           style="padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px; margin-left: auto;">
+            글쓰기
+        </a>
+    </div>
+<!--    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">-->
+<!--        <a th:href="@{${board.seqBoardNum != null} ? '/boardWrite/' + ${board.seqBoardNum} : '/boardWrite'}" class="btn btn-primary"-->
+<!--           style="padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px; margin-left: auto;">-->
+<!--            글쓰기-->
+<!--        </a>-->
+<!--    </div>-->
+    <div class="pagination" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+        <ul style="list-style: none; padding: 0; display: flex; gap: 10px; justify-content: center; margin: 0;">
+            <li th:if="${boardList.hasPrevious()}">
+                <a th:href="@{'/boardlist?page=' + (${currentPage} - 1)}">이전</a>
+            </li>
+            <li th:each="i : ${#numbers.sequence(0, totalPages - 1)}"
+                th:classappend="${i == currentPage} ? 'current'">
+                <a th:href="@{'/boardlist?page=' + ${i}}" th:text="${i + 1}"></a>
+            </li>
+            <li th:if="${boardList.hasNext()}">
+                <a th:href="@{'/boardlist?page=' + (${currentPage} + 1)}">다음</a>
+            </li>
+        </ul>
+    </div>
+    <div style="margin: 20px 0; display: flex; justify-content: center;">
+        <form th:action="@{/boardSearch}" method="get" style="display: flex; gap: 10px;">
+            <input type="text" name="keyword" placeholder="검색어를 입력하세요" style="padding: 10px; width: 300px; border: 1px solid #ddd; border-radius: 5px;">
+            <button type="submit" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                검색
+            </button>
+        </form>
+    </div>
+</body>
+</html>
