@@ -12,8 +12,7 @@ import org.springframework.data.domain.Sort;
 import webJava.board.dto.BoardFormDTO;
 import webJava.board.entity.BoardEntity;
 import webJava.board.service.BoardService;
-
-import java.util.Map;
+import webJava.user.dto.UserDTO;
 
 @Controller
 public class MainController {
@@ -66,13 +65,6 @@ public class MainController {
         return "redirect:/boardList";
     }
 
-    @PostMapping("/home")
-    public String postMethodName(@ModelAttribute BoardFormDTO todoForm) {
-        //boardService.saveBoard(null, todoForm);
 
-        return "home";
-    }
-    
-    
     
 }

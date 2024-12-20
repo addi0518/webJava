@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 화면</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .login-container {
+            width: 300px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .login-container h2 {
+            margin: 0 0 20px;
+            text-align: center;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #5cb85c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background-color: #4cae4c;
+        }
+        .login-container .signup-button {
+            background-color: #0275d8;
+        }
+        .login-container .signup-button:hover {
+            background-color: #025aa5;
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <h2>로그인</h2>
+    <form action="/login" method="POST">
+        <input type="text" name="username" placeholder="아이디" required>
+        <input type="password" name="password" placeholder="비밀번호" required>
+        <button type="submit">로그인</button>
+    </form>
+    <button class="signup-button" onclick="window.location.href='/join'">회원가입</button>
+</div>
+</body>
+</html>
