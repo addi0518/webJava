@@ -1,12 +1,12 @@
-package webJava.user.service;
+package webJava.service;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import webJava.user.dto.CustomUserDetails;
-import webJava.user.entity.UserEntity;
-import webJava.user.repository.UserRepo;
+import webJava.dto.CustomUserDetails;
+import webJava.entity.UserEntity;
+import webJava.repository.UserRepo;
 
 @Service
 public class CunstomUserDetailsService implements UserDetailsService {

@@ -1,12 +1,12 @@
-package webJava.user.service;
+package webJava.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import webJava.user.dto.UserDTO;
-import webJava.user.entity.UserEntity;
-import webJava.user.repository.UserRepo;
+import webJava.dto.UserDTO;
+import webJava.entity.UserEntity;
+import webJava.repository.UserRepo;
 
 @Service
 @RequiredArgsConstructor

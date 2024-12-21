@@ -1,13 +1,12 @@
-package webJava.user.controller;
+package webJava.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
-import webJava.user.dto.UserDTO;
-import webJava.user.service.UserService;
+import webJava.dto.UserDTO;
+import webJava.service.UserService;
 
 @Controller
 @ResponseBody

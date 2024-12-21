@@ -1,4 +1,4 @@
-package webJava.board.dto;
+package webJava.dto;
 
 import lombok.Getter;
 import lombok.Setter;

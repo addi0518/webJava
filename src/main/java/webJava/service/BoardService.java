@@ -1,4 +1,4 @@
-package webJava.board.service;
+package webJava.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -7,12 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
-import webJava.board.dto.BoardFormDTO;
-import webJava.board.entity.BoardEntity;
-import webJava.board.repository.BoardRepo;
-import webJava.user.dto.UserDTO;
-
-import java.util.Map;
+import webJava.dto.BoardFormDTO;
+import webJava.entity.BoardEntity;
+import webJava.repository.BoardRepo;
 
 @Service
 @RequiredArgsConstructor

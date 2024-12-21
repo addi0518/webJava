@@ -1,25 +1,47 @@
-package webJava.board.controller;
+package webJava.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Sort;
 
-import webJava.board.dto.BoardFormDTO;
-import webJava.board.entity.BoardEntity;
-import webJava.board.service.BoardService;
-import webJava.user.dto.UserDTO;
+import webJava.dto.BoardFormDTO;
+import webJava.entity.BoardEntity;
+import webJava.service.BoardService;
+
+import java.util.Collection;
+import java.util.Iterator;
 
 @Controller
+@ResponseBody
 public class MainController {
     @Autowired 
     private BoardService boardService;
 
     @GetMapping("/")
+    public String mainP() {
+
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        //세션 사용자 role
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+        Iterator<? extends GrantedAuthority> iter = authorities.iterator();
+        GrantedAuthority auth = iter.next();
+        String role = auth.getAuthority();
+
+        return "main Controller" + username + " " + role;
+    }
+
+    @GetMapping("/boardList")
     public String getBoardList(@PageableDefault(size = 10, sort = "createDt", direction = Sort.Direction.DESC) Pageable pageable, Model model) {
         Page<BoardEntity> boardList = boardService.getBoardList(pageable);
         model.addAttribute("boardList", boardList);

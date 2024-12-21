@@ -1,4 +1,4 @@
-package webJava.board.entity;
+package webJava.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,12 +11,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.ui.Model;
-import webJava.board.dto.BoardFormDTO;
-import webJava.user.dto.UserDTO;
+import webJava.dto.BoardFormDTO;
 
-import java.awt.event.MouseEvent;
 import java.time.LocalDateTime;
-import java.util.Map;
 
 @Getter
 @Entity

@@ -1,4 +1,4 @@
-package webJava.user.dto;
+package webJava.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,5 +9,6 @@ public class UserDTO {
     private String email;
     private String name;
     private String password;
+    private String role;
 
 }

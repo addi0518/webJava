@@ -1,11 +1,12 @@
-package webJava.user.entity;
+package webJava.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import webJava.user.dto.UserDTO;
+import webJava.dto.TokenDTO;
+import webJava.dto.UserDTO;
 
 import java.time.LocalDateTime;
 
@@ -42,6 +43,13 @@ public class UserEntity {
         this.name = userDTO.getName();
         this.role = "ROLE_USER";
         this.joinDt = LocalDateTime.now();
+    }
+
+    @Builder
+    public UserEntity(TokenDTO tokenDTO) {
+        this.email = tokenDTO.getUsername();
+        this.password = tokenDTO.getPassword();
+        this.role = tokenDTO.getRole();
     }
 
 }

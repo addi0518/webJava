@@ -1,8 +1,8 @@
-package webJava.user.dto;
+package webJava.dto;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import webJava.user.entity.UserEntity;
+import webJava.entity.UserEntity;
 
 import java.util.ArrayList;
 import java.util.Collection;
