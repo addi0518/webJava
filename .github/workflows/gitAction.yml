@@ -1,4 +1,4 @@
-name: Build and Deploy Spring Boot with Docker
+name: javaProject
 
 on:
   push:
