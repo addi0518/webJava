@@ -13,10 +13,10 @@ jobs:
       contents: read
 
     env:
-      DB_URL: ${{ secrets.DB_URL }}
-      DB_USERNAME: ${{ secrets.DB_USERNAME }}
-      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-      JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
+      DB_URL: ${ DB_URL }
+      DB_USERNAME: ${ DB_USERNAME }
+      DB_PASSWORD: ${ DB_PASSWORD }
+      JWT_SECRET_KEY: ${ JWT_SECRET_KEY }
 
     steps:
       - uses: actions/checkout@v4
