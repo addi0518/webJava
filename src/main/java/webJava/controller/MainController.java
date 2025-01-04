@@ -66,35 +66,6 @@ public class MainController {
 
     }
 
-    /*
-    @GetMapping("/boardWrite")
-    public String getBoardWrite(Model model) {
-        model.addAttribute("board", null);
-
-        return "boardWrite";
-    }
-
-    @GetMapping("/board/write/{seqBoardNum}")
-    public ResponseEntity<Map<String, Object>> getBoardWrite(@PathVariable Long seqBoardNum) {
-        Map<String, Object> response = new HashMap<>();
-
-        try {
-            BoardEntity boardEntity = boardService.getBoard(seqBoardNum);
-            if (boardEntity == null) {
-                response.put("message", "Board not found");
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
-            }
-            response.put("board", boardEntity);
-            return ResponseEntity.ok(response);
-        } catch (Exception e) {
-            response.put("message", "An error occurred");
-            response.put("error", e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-        }
-
-    }
-     */
-
     @GetMapping("/board/{seqBoardNum}")
     public ResponseEntity<Map<String, Object>> getBoard(@PathVariable Long seqBoardNum) {
         Map<String, Object> response = new HashMap<>();
