@@ -1,0 +1,74 @@
+/* 전체 컨테이너 */
+.board-list-container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* 제목 스타일 */
+.board-list-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: black;
+}
+
+/* 테이블 스타일 */
+.board-list-table {
+    margin-bottom: 20px;
+}
+
+/* 게시글 링크 스타일 */
+.board-link {
+    color: #007bff;
+    text-decoration: none;
+}
+.board-link:hover {
+    text-decoration: underline;
+}
+
+/* 글쓰기 버튼 컨테이너 */
+.write-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+/* 페이지네이션 컨테이너 */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.pagination-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+.pagination-list li {
+    display: inline-block;
+}
+
+.pagination-list .active .pagination-button {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* 검색 폼 */
+.search-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 300px;
+}
+
+.search-button {
+    background-color: #007bff;
+    color: #fff;
+}

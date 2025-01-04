@@ -47,12 +47,6 @@
             글쓰기
         </a>
     </div>
-<!--    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">-->
-<!--        <a th:href="@{${board.seqBoardNum != null} ? '/boardWrite/' + ${board.seqBoardNum} : '/boardWrite'}" class="btn btn-primary"-->
-<!--           style="padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px; margin-left: auto;">-->
-<!--            글쓰기-->
-<!--        </a>-->
-<!--    </div>-->
     <div class="pagination" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
         <ul style="list-style: none; padding: 0; display: flex; gap: 10px; justify-content: center; margin: 0;">
             <li th:if="${boardList.hasPrevious()}">

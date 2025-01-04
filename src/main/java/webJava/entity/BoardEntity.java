@@ -45,18 +45,18 @@ public class BoardEntity {
 //    private LocalDateTime updateDt;
 
     @Builder
-    public BoardEntity(BoardFormDTO boardForm, Model model){
+    public BoardEntity(BoardFormDTO boardForm, UserEntity user) {
         this.title = boardForm.getTitle();
         this.content = boardForm.getContent();
-        this.email = (String) model.getAttribute("email");
-        this.name = String.valueOf(model.getAttribute("name"));
+        this.email = user.getEmail();
+        this.name = user.getName();
         this.createDt = LocalDateTime.now();
     }
 
-    public void setUpdateBoard(BoardFormDTO boardForm, Model model){
+    public void setUpdateBoard(BoardFormDTO boardForm, String name){
         this.title = boardForm.getTitle();
         this.content = boardForm.getContent();
-        this.name = String.valueOf(model.getAttribute("name"));
+        this.name = name;
     }
 
 }

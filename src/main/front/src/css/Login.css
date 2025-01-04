@@ -1,0 +1,45 @@
+.login-div-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh; /* 화면 전체 높이를 채우도록 설정 */
+    margin: 0;
+}
+
+.login-container {
+    width: 300px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.login-container h2 {
+    margin: 0 0 20px;
+    text-align: center;
+}
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #5cb85c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.login-container button:hover {
+    background-color: #4cae4c;
+}
+.login-container .signup-button {
+    background-color: #0275d8;
+}
+.login-container .signup-button:hover {
+    background-color: #025aa5;
+}
